@@ -2,6 +2,8 @@ package com.jongs.br;
 
 import java.util.List;
 
+import com.google.gson.Gson;
+
 public class Main {
     public static void main(String[] args) {
         Reader reader = new Reader();
@@ -12,6 +14,9 @@ public class Main {
         source = "draenceia/src/main/resources/tesseractDraence/jogador/1.png";
         List<String> list1 = reader.readHabilityOverral(source, 1);
         Player paulo = new Player(list1, list2, list3);
-        System.out.println(paulo.toString());
+
+        Gson gson = new Gson();
+        String pauloStr = gson.toJson(paulo);
+        System.out.println(pauloStr);
     }
 }
