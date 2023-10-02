@@ -21,9 +21,47 @@ public class Reader {
         File image = new File(source);
         List<String> list = new ArrayList<>();
         int x, y, width, height;
+        String result;
+        Rectangle rec = new Rectangle();
         switch (page) {
             case 1:
-                
+                x = 0;
+                y = 0;
+                width = 260;
+                height = 35;
+                rec = new Rectangle(x, y, width, height);
+                result = tesseract.doOCR(image, rec);
+                result = result.replaceAll("\\s+", "");
+                list.add(result);
+                x = 71;
+                y = 53;
+                width = 30;
+                height = 20;   
+                rec = new Rectangle(x, y, width, height);
+                result = tesseract.doOCR(image, rec);
+                result = result.replaceAll("\\s+", "");
+                result = result.replaceAll("[^a-zA-Z]", "");
+                list.add(result);
+                x = 65;
+                y = 75;
+                width = 55;
+                height = 45;   
+                rec = new Rectangle(x, y, width, height);
+                result = tesseract.doOCR(image, rec);
+                result = result.replaceAll("\\s+", "");
+                list.add(result);
+                x = 280;
+                y = 215;
+                width = 140;
+                height = 30;
+                for(int i = 0; i < 4; i++){
+                    rec = new Rectangle(x, y, width, height);
+                    result = tesseract.doOCR(image, rec);
+                    result = result.replaceAll("[^a-zA-Z0-9áéíóúÁÉÍÓÚâêôîûÂÊÎÔÛãõÃÕàÀ]", "");
+                    result = result.replaceAll("[?!]", "");
+                    list.add(result);
+                    y+=30;     
+                }
                 break;
             case 2:
                 x = 310;
@@ -31,8 +69,8 @@ public class Reader {
                 width = 30;
                 height = 30;
                 for(int i = 0; i < 17; i++){
-                    Rectangle rec = new Rectangle(x, y, width, height);
-                    String result = tesseract.doOCR(image, rec);
+                    rec = new Rectangle(x, y, width, height);
+                    result = tesseract.doOCR(image, rec);
                     result = result.replaceAll("\\D+", "");
                     list.add(result);
                     y += 30;
@@ -45,8 +83,7 @@ public class Reader {
                 //int width = 270;
                 width = 30;
                 height = 30;
-                String result;
-                Rectangle rec = new Rectangle(x, y, width, height);
+                rec = new Rectangle(x, y, width, height);
                 for(int i = 0; i < 13; i++){
                     rec = new Rectangle(x, y, width, height);
                     result = tesseract.doOCR(image, rec);
@@ -67,11 +104,6 @@ public class Reader {
                 result = tesseract.doOCR(image, rec);
                 result = result.replaceAll("\\s+", "");
                 list.add(result);
-                break;
-            case 4:
-                
-                break;
-            default:
                 break;
         }
         return list;
