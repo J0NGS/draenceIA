@@ -1,4 +1,5 @@
 package com.jongs.br;
+import java.util.List;
 import java.util.Objects;
 
 public class Player {
@@ -89,6 +90,51 @@ public class Player {
         this.weight = weight;
         this.strongFoot = strongFoot;
     }
+
+
+    public Player(List<String> attributes1, List<String> attributes2, List<String> attributes3) {
+        this.name = attributes1.get(0);
+        this.position = attributes1.get(1);
+        this.over = Integer.parseInt(attributes1.get(2));
+        this.nacionality = attributes1.get(3);
+        this.league = attributes1.get(4);
+        this.club = attributes1.get(5);
+        this.playingStyle = attributes1.get(6);
+        this.offensiveAwareness = Integer.parseInt(attributes2.get(0));
+        this.ballControll = Integer.parseInt(attributes2.get(1));
+        this.dribbling = Integer.parseInt(attributes2.get(2));
+        this.tightPossesion = Integer.parseInt(attributes2.get(3));
+        this.lowPass = Integer.parseInt(attributes2.get(4));
+        this.loftedPass = Integer.parseInt(attributes2.get(5));
+        this.finishing = Integer.parseInt(attributes2.get(6));
+        this.heading = Integer.parseInt(attributes2.get(7));
+        this.placeKicking = Integer.parseInt(attributes2.get(8));
+        this.curl = Integer.parseInt(attributes2.get(9));
+        this.speed = Integer.parseInt(attributes2.get(10));
+        this.acceleration = Integer.parseInt(attributes2.get(11));
+        this.kickPower = Integer.parseInt(attributes2.get(12));
+        this.jump = Integer.parseInt(attributes2.get(13));
+        this.physicalContact = Integer.parseInt(attributes2.get(14));
+        this.balance = Integer.parseInt(attributes2.get(15));
+        this.stamina = Integer.parseInt(attributes2.get(16));
+        this.defensiveAwareness = Integer.parseInt(attributes3.get(0));
+        this.ballWinning = Integer.parseInt(attributes3.get(1));
+        this.aggression = Integer.parseInt(attributes3.get(2));
+        this.gkAwareness = Integer.parseInt(attributes3.get(3));
+        this.gkCatching = Integer.parseInt(attributes3.get(4));
+        this.gkClearing = Integer.parseInt(attributes3.get(5));
+        this.gkReflexes = Integer.parseInt(attributes3.get(6));
+        this.gkReach = Integer.parseInt(attributes3.get(7));
+        this.weakFootUsage = Integer.parseInt(attributes3.get(8));
+        this.weakFootAccuracy = Integer.parseInt(attributes3.get(9));
+        this.form = Integer.parseInt(attributes3.get(10));
+        this.injuryResistance = Integer.parseInt(attributes3.get(11));
+        this.age = Integer.parseInt(attributes3.get(12));
+        this.height = Integer.parseInt(attributes3.get(13));
+        this.weight = Integer.parseInt(attributes3.get(14));
+        this.strongFoot = attributes3.get(15);
+}
+
 
     public String getName() {
         return this.name;
