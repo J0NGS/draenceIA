@@ -13,10 +13,16 @@ public class Main {
         List<String> list2 = reader.readHabilityOverral(source, 2);
         source = "draenceia/src/main/resources/tesseractDraence/jogador/1.png";
         List<String> list1 = reader.readHabilityOverral(source, 1);
+        source = "draenceia/src/main/resources/tesseractDraence/jogador/4.png";
+        List<String> list4 = reader.readHabilityOverral(source, 4);
         Player paulo = new Player(list1, list2, list3);
+
+        for(String str:list4){
+            System.out.println(str);
+        }
 
         Gson gson = new Gson();
         String pauloStr = gson.toJson(paulo);
-        System.out.println(pauloStr);
+        //System.out.println(pauloStr);
     }
 }

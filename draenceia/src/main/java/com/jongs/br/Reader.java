@@ -105,6 +105,31 @@ public class Reader {
                 result = result.replaceAll("\\s+", "");
                 list.add(result);
                 break;
+            case 4:
+                x = 0;
+                y = 35;
+                width = 280;
+                height = 30;
+                for(int i = 0; i < 10; i++){
+                    rec = new Rectangle(x, y, width, height);
+                    result = tesseract.doOCR(image, rec);
+                    if(result.equals(""))
+                        result = result.replaceAll("", "-");
+                    result = result.replaceAll("\\n", "");
+                    list.add(result);
+                    y+=30;
+                }
+                y = 365;
+                for(int i = 0; i < 5; i++){
+                    rec = new Rectangle(x, y, width, height);
+                    result = tesseract.doOCR(image, rec);
+                    if(result.equals(""))
+                        result = result.replaceAll("", "-");
+                    result = result.replaceAll("\\n", "");
+                    list.add(result);
+                    y+=30;
+                }
+                break;
         }
         return list;
         } catch (Exception e) {
