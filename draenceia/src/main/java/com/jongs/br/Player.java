@@ -43,7 +43,8 @@ public class Player {
     private int height;
     private int weight;
     private String strongFoot;
-
+    private List<String> playerSkills;
+    private List<String> comPlayerStyle;
 
     public Player() {
     }
@@ -92,7 +93,7 @@ public class Player {
     }
 
 
-    public Player(List<String> attributes1, List<String> attributes2, List<String> attributes3) {
+    public Player(List<String> attributes1, List<String> attributes2, List<String> attributes3, List<String> attributes4) {
         this.name = attributes1.get(0);
         this.position = attributes1.get(1);
         this.over = Integer.parseInt(attributes1.get(2));
@@ -133,6 +134,8 @@ public class Player {
         this.height = Integer.parseInt(attributes3.get(13));
         this.weight = Integer.parseInt(attributes3.get(14));
         this.strongFoot = attributes3.get(15);
+        this.playerSkills = attributes4.subList(0, 9);
+        this.comPlayerStyle = attributes4.subList(9, attributes4.size());
 }
 
 
@@ -456,205 +459,22 @@ public class Player {
         this.strongFoot = strongFoot;
     }
 
-    public Player name(String name) {
-        setName(name);
-        return this;
+    public List<String> getPlayerSkills() {
+        return this.playerSkills;
     }
 
-    public Player position(String position) {
-        setPosition(position);
-        return this;
+    public void setPlayerSkills(List<String> playerSkills) {
+        this.playerSkills = playerSkills;
     }
 
-    public Player over(int over) {
-        setOver(over);
-        return this;
+    public List<String> getComPlayerStyle() {
+        return this.comPlayerStyle;
     }
 
-    public Player nacionality(String nacionality) {
-        setNacionality(nacionality);
-        return this;
+    public void setComPlayerStyle(List<String> comPlayerStyle) {
+        this.comPlayerStyle = comPlayerStyle;
     }
 
-    public Player league(String league) {
-        setLeague(league);
-        return this;
-    }
-
-    public Player club(String club) {
-        setClub(club);
-        return this;
-    }
-
-    public Player playingStyle(String playingStyle) {
-        setPlayingStyle(playingStyle);
-        return this;
-    }
-
-    public Player offensiveAwareness(int offensiveAwareness) {
-        setOffensiveAwareness(offensiveAwareness);
-        return this;
-    }
-
-    public Player ballControll(int ballControll) {
-        setBallControll(ballControll);
-        return this;
-    }
-
-    public Player dribbling(int dribbling) {
-        setDribbling(dribbling);
-        return this;
-    }
-
-    public Player tightPossesion(int tightPossesion) {
-        setTightPossesion(tightPossesion);
-        return this;
-    }
-
-    public Player lowPass(int lowPass) {
-        setLowPass(lowPass);
-        return this;
-    }
-
-    public Player loftedPass(int loftedPass) {
-        setLoftedPass(loftedPass);
-        return this;
-    }
-
-    public Player finishing(int finishing) {
-        setFinishing(finishing);
-        return this;
-    }
-
-    public Player heading(int heading) {
-        setHeading(heading);
-        return this;
-    }
-
-    public Player placeKicking(int placeKicking) {
-        setPlaceKicking(placeKicking);
-        return this;
-    }
-
-    public Player curl(int curl) {
-        setCurl(curl);
-        return this;
-    }
-
-    public Player speed(int speed) {
-        setSpeed(speed);
-        return this;
-    }
-
-    public Player acceleration(int acceleration) {
-        setAcceleration(acceleration);
-        return this;
-    }
-
-    public Player kickPower(int kickPower) {
-        setKickPower(kickPower);
-        return this;
-    }
-
-    public Player jump(int jump) {
-        setJump(jump);
-        return this;
-    }
-
-    public Player physicalContact(int physicalContact) {
-        setPhysicalContact(physicalContact);
-        return this;
-    }
-
-    public Player balance(int balance) {
-        setBalance(balance);
-        return this;
-    }
-
-    public Player stamina(int stamina) {
-        setStamina(stamina);
-        return this;
-    }
-
-    public Player defensiveAwareness(int defensiveAwareness) {
-        setDefensiveAwareness(defensiveAwareness);
-        return this;
-    }
-
-    public Player ballWinning(int ballWinning) {
-        setBallWinning(ballWinning);
-        return this;
-    }
-
-    public Player aggression(int aggression) {
-        setAggression(aggression);
-        return this;
-    }
-
-    public Player gkAwareness(int gkAwareness) {
-        setGkAwareness(gkAwareness);
-        return this;
-    }
-
-    public Player gkCatching(int gkCatching) {
-        setGkCatching(gkCatching);
-        return this;
-    }
-
-    public Player gkClearing(int gkClearing) {
-        setGkClearing(gkClearing);
-        return this;
-    }
-
-    public Player gkReflexes(int gkReflexes) {
-        setGkReflexes(gkReflexes);
-        return this;
-    }
-
-    public Player gkReach(int gkReach) {
-        setGkReach(gkReach);
-        return this;
-    }
-
-    public Player weakFootUsage(int weakFootUsage) {
-        setWeakFootUsage(weakFootUsage);
-        return this;
-    }
-
-    public Player weakFootAccuracy(int weakFootAccuracy) {
-        setWeakFootAccuracy(weakFootAccuracy);
-        return this;
-    }
-
-    public Player form(int form) {
-        setForm(form);
-        return this;
-    }
-
-    public Player injuryResistance(int injuryResistance) {
-        setInjuryResistance(injuryResistance);
-        return this;
-    }
-
-    public Player age(int age) {
-        setAge(age);
-        return this;
-    }
-
-    public Player height(int height) {
-        setHeight(height);
-        return this;
-    }
-
-    public Player weight(int weight) {
-        setWeight(weight);
-        return this;
-    }
-
-    public Player strongFoot(String strongFoot) {
-        setStrongFoot(strongFoot);
-        return this;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -664,58 +484,13 @@ public class Player {
             return false;
         }
         Player player = (Player) o;
-        return Objects.equals(name, player.name) && Objects.equals(position, player.position) && over == player.over && Objects.equals(nacionality, player.nacionality) && Objects.equals(league, player.league) && Objects.equals(club, player.club) && Objects.equals(playingStyle, player.playingStyle) && offensiveAwareness == player.offensiveAwareness && ballControll == player.ballControll && dribbling == player.dribbling && tightPossesion == player.tightPossesion && lowPass == player.lowPass && loftedPass == player.loftedPass && finishing == player.finishing && heading == player.heading && placeKicking == player.placeKicking && curl == player.curl && speed == player.speed && acceleration == player.acceleration && kickPower == player.kickPower && jump == player.jump && physicalContact == player.physicalContact && balance == player.balance && stamina == player.stamina && defensiveAwareness == player.defensiveAwareness && ballWinning == player.ballWinning && aggression == player.aggression && gkAwareness == player.gkAwareness && gkCatching == player.gkCatching && gkClearing == player.gkClearing && gkReflexes == player.gkReflexes && gkReach == player.gkReach && weakFootUsage == player.weakFootUsage && weakFootAccuracy == player.weakFootAccuracy && form == player.form && injuryResistance == player.injuryResistance && age == player.age && height == player.height && weight == player.weight && Objects.equals(strongFoot, player.strongFoot);
+        return Objects.equals(name, player.name) && Objects.equals(position, player.position) && over == player.over && Objects.equals(nacionality, player.nacionality) && Objects.equals(league, player.league) && Objects.equals(club, player.club) && Objects.equals(playingStyle, player.playingStyle) && offensiveAwareness == player.offensiveAwareness && ballControll == player.ballControll && dribbling == player.dribbling && tightPossesion == player.tightPossesion && lowPass == player.lowPass && loftedPass == player.loftedPass && finishing == player.finishing && heading == player.heading && placeKicking == player.placeKicking && curl == player.curl && speed == player.speed && acceleration == player.acceleration && kickPower == player.kickPower && jump == player.jump && physicalContact == player.physicalContact && balance == player.balance && stamina == player.stamina && defensiveAwareness == player.defensiveAwareness && ballWinning == player.ballWinning && aggression == player.aggression && gkAwareness == player.gkAwareness && gkCatching == player.gkCatching && gkClearing == player.gkClearing && gkReflexes == player.gkReflexes && gkReach == player.gkReach && weakFootUsage == player.weakFootUsage && weakFootAccuracy == player.weakFootAccuracy && form == player.form && injuryResistance == player.injuryResistance && age == player.age && height == player.height && weight == player.weight && Objects.equals(strongFoot, player.strongFoot) && Objects.equals(playerSkills, player.playerSkills) && Objects.equals(comPlayerStyle, player.comPlayerStyle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, position, over, nacionality, league, club, playingStyle, offensiveAwareness, ballControll, dribbling, tightPossesion, lowPass, loftedPass, finishing, heading, placeKicking, curl, speed, acceleration, kickPower, jump, physicalContact, balance, stamina, defensiveAwareness, ballWinning, aggression, gkAwareness, gkCatching, gkClearing, gkReflexes, gkReach, weakFootUsage, weakFootAccuracy, form, injuryResistance, age, height, weight, strongFoot);
+        return Objects.hash(name, position, over, nacionality, league, club, playingStyle, offensiveAwareness, ballControll, dribbling, tightPossesion, lowPass, loftedPass, finishing, heading, placeKicking, curl, speed, acceleration, kickPower, jump, physicalContact, balance, stamina, defensiveAwareness, ballWinning, aggression, gkAwareness, gkCatching, gkClearing, gkReflexes, gkReach, weakFootUsage, weakFootAccuracy, form, injuryResistance, age, height, weight, strongFoot, playerSkills, comPlayerStyle);
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " name='" + getName() + "'" +
-            ", position='" + getPosition() + "'" +
-            ", over='" + getOver() + "'" +
-            ", nacionality='" + getNacionality() + "'" +
-            ", league='" + getLeague() + "'" +
-            ", club='" + getClub() + "'" +
-            ", playingStyle='" + getPlayingStyle() + "'" +
-            ", offensiveAwareness='" + getOffensiveAwareness() + "'" +
-            ", ballControll='" + getBallControll() + "'" +
-            ", dribbling='" + getDribbling() + "'" +
-            ", tightPossesion='" + getTightPossesion() + "'" +
-            ", lowPass='" + getLowPass() + "'" +
-            ", loftedPass='" + getLoftedPass() + "'" +
-            ", finishing='" + getFinishing() + "'" +
-            ", heading='" + getHeading() + "'" +
-            ", placeKicking='" + getPlaceKicking() + "'" +
-            ", curl='" + getCurl() + "'" +
-            ", speed='" + getSpeed() + "'" +
-            ", acceleration='" + getAcceleration() + "'" +
-            ", kickPower='" + getKickPower() + "'" +
-            ", jump='" + getJump() + "'" +
-            ", physicalContact='" + getPhysicalContact() + "'" +
-            ", balance='" + getBalance() + "'" +
-            ", stamina='" + getStamina() + "'" +
-            ", defensiveAwareness='" + getDefensiveAwareness() + "'" +
-            ", ballWinning='" + getBallWinning() + "'" +
-            ", aggression='" + getAggression() + "'" +
-            ", gkAwareness='" + getGkAwareness() + "'" +
-            ", gkCatching='" + getGkCatching() + "'" +
-            ", gkClearing='" + getGkClearing() + "'" +
-            ", gkReflexes='" + getGkReflexes() + "'" +
-            ", gkReach='" + getGkReach() + "'" +
-            ", weakFootUsage='" + getWeakFootUsage() + "'" +
-            ", weakFootAccuracy='" + getWeakFootAccuracy() + "'" +
-            ", form='" + getForm() + "'" +
-            ", injuryResistance='" + getInjuryResistance() + "'" +
-            ", age='" + getAge() + "'" +
-            ", height='" + getHeight() + "'" +
-            ", weight='" + getWeight() + "'" +
-            ", strongFoot='" + getStrongFoot() + "'" +
-            "}";
-    }
     
 }
