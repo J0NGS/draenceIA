@@ -1,24 +1,45 @@
 package com.jongs.br;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Main {
     public static void main(String[] args) {
-        Reader reader = new Reader();
-        String source = "draenceia/src/main/resources/tesseractDraence/jogador/3.png";
-        List<String> list3 = reader.readHabilityOverral(source, 3);
-        source = "draenceia/src/main/resources/tesseractDraence/jogador/2.png";
-        List<String> list2 = reader.readHabilityOverral(source, 2);
-        source = "draenceia/src/main/resources/tesseractDraence/jogador/1.png";
-        List<String> list1 = reader.readHabilityOverral(source, 1);
-        source = "draenceia/src/main/resources/tesseractDraence/jogador/4.png";
-        List<String> list4 = reader.readHabilityOverral(source, 4);
-        Player paulo = new Player(list1, list2, list3,  list4);
+        long startTime = System.currentTimeMillis();
 
-        Gson gson = new Gson();
-        String pauloStr = gson.toJson(paulo);
-        System.out.println(pauloStr);
+        String source1 = "draenceia/src/main/resources/tesseractDraence/jogador/Nabi/1.png";
+        String source2 = "draenceia/src/main/resources/tesseractDraence/jogador/Nabi/2.png";
+        String source3 = "draenceia/src/main/resources/tesseractDraence/jogador/Nabi/3.png";
+        String source4 = "draenceia/src/main/resources/tesseractDraence/jogador/Nabi/4.png";
+
+        Reader reader = new Reader();
+        List<String> list1 = reader.readHabilityOverral(source1, 1);
+        List<String> list2 = reader.readHabilityOverral(source2, 2);
+        List<String> list3 = reader.readHabilityOverral(source3, 3);
+        List<String> list4 = reader.readHabilityOverral(source4, 4);
+
+        Player nabi = new Player(list1, list2, list3, list4);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String nabiStr = gson.toJson(nabi);
+        System.out.println(nabiStr);
+
+        try (FileOutputStream fos = new FileOutputStream("draenceia/src/main/resources/tesseractDraence/jogador/Nabi/Nabi.json");
+             OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8)) {
+            osw.write(nabiStr);
+            System.out.println("JSON salvo com sucesso no arquivo Nabi.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        long endTime = System.currentTimeMillis();
+        long executionTime = endTime - startTime;
+        System.out.println("Tempo de execução: " + executionTime + " milissegundos");
     }
 }
+

@@ -97,10 +97,10 @@ public class Player {
         this.name = attributes1.get(0);
         this.position = attributes1.get(1);
         this.over = Integer.parseInt(attributes1.get(2));
-        this.nacionality = attributes1.get(3);
-        this.league = attributes1.get(4);
-        this.club = attributes1.get(5);
-        this.playingStyle = attributes1.get(6);
+        //this.nacionality = attributes1.get(3);
+        this.league = attributes1.get(3);
+        this.club = attributes1.get(4);
+        this.playingStyle = attributes1.get(5);
         this.offensiveAwareness = Integer.parseInt(attributes2.get(0));
         this.ballControll = Integer.parseInt(attributes2.get(1));
         this.dribbling = Integer.parseInt(attributes2.get(2));
@@ -134,8 +134,8 @@ public class Player {
         this.height = Integer.parseInt(attributes3.get(13));
         this.weight = Integer.parseInt(attributes3.get(14));
         this.strongFoot = attributes3.get(15);
-        this.playerSkills = attributes4.subList(0, 9);
-        this.comPlayerStyle = attributes4.subList(9, attributes4.size());
+        this.playerSkills = attributes4.subList(0, 10);
+        this.comPlayerStyle = attributes4.subList(11, attributes4.size());
 }
 
 

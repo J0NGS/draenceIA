@@ -3,7 +3,10 @@ package com.jongs.br;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+
 import java.awt.Rectangle;
+
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 
@@ -25,101 +28,116 @@ public class Reader {
         Rectangle rec = new Rectangle();
         switch (page) {
             case 1:
-                x = 0;
-                y = 0;
-                width = 260;
+                tesseract.setLanguage("por");
+                //Lendo o nome do  jogador
+                x = 810;
+                y = 215;
+                width = 300;    
                 height = 35;
                 rec = new Rectangle(x, y, width, height);
+
+                // Realize a leitura usando o Tesseract na nova imagem recortada
                 result = tesseract.doOCR(image, rec);
+
                 result = result.replaceAll("\\s+", "");
                 list.add(result);
-                x = 71;
-                y = 53;
-                width = 30;
-                height = 20;   
+                
+                
+                // Lendo a posição do jogador
+                x = 905;
+                y = 280;
+                width = 60;
+                height = 25;   
                 rec = new Rectangle(x, y, width, height);
                 result = tesseract.doOCR(image, rec);
                 result = result.replaceAll("\\s+", "");
                 result = result.replaceAll("[^a-zA-Z]", "");
                 list.add(result);
-                x = 65;
-                y = 75;
-                width = 55;
-                height = 45;   
+                
+                // Lendo over
+                x = 890;
+                y = 310;
+                width = 100;
+                height = 65;   
                 rec = new Rectangle(x, y, width, height);
                 result = tesseract.doOCR(image, rec);
                 result = result.replaceAll("\\s+", "");
                 list.add(result);
-                x = 280;
-                y = 215;
-                width = 140;
-                height = 30;
-                for(int i = 0; i < 4; i++){
+                
+                //Lendo informações básicas da primeira página
+                x = 1200;
+                y = 565;
+                width = 150;
+                height = 45;
+                for(int i = 0; i < 3; i++){
                     rec = new Rectangle(x, y, width, height);
                     result = tesseract.doOCR(image, rec);
                     result = result.replaceAll("[^a-zA-Z0-9áéíóúÁÉÍÓÚâêôîûÂÊÎÔÛãõÃÕàÀ]", "");
                     result = result.replaceAll("[?!]", "");
                     list.add(result);
-                    y+=30;     
+                    y+=45;     
                 }
                 break;
             case 2:
-                x = 310;
-                y = 55;
-                width = 30;
-                height = 30;
+                tesseract.setLanguage("por");
+                x = 1260;
+                y = 205;
+                width = 52;
+                height = 45;
                 for(int i = 0; i < 17; i++){
                     rec = new Rectangle(x, y, width, height);
                     result = tesseract.doOCR(image, rec);
                     result = result.replaceAll("\\D+", "");
                     list.add(result);
-                    y += 30;
+                    y += 45;
                 }
                 break;
             case 3:
-                //int x = 0;
-                x = 310;
-                y = 55;
-                //int width = 270;
-                width = 30;
-                height = 30;
-                rec = new Rectangle(x, y, width, height);
+                tesseract.setLanguage("eng");
+                x = 1260;
+                y = 205;
+                width = 52;
+                height = 45;
                 for(int i = 0; i < 13; i++){
                     rec = new Rectangle(x, y, width, height);
                     result = tesseract.doOCR(image, rec);
                     result = result.replaceAll("\\D+", "");
                     list.add(result);
-                    y += 30;
+                    y += 45;
                 }
-                x = 300;
+                tesseract.setLanguage("por");
+                x = 1240;   
+                width = 90;
                 for(int i = 0; i < 2; i++){
                     rec = new Rectangle(x, y, width, height);
                     result = tesseract.doOCR(image, rec);
                     result = result.replaceAll("\\s+", "");
+                    result = result.replaceAll("\\D", "");
                     list.add(result);
-                    y += 30;
+                    y += 45;
                 }
-                x  = 310;
                 rec = new Rectangle(x, y, width, height);
                 result = tesseract.doOCR(image, rec);
                 result = result.replaceAll("\\s+", "");
                 list.add(result);
                 break;
             case 4:
-                x = 0;
-                y = 35;
-                width = 280;
-                height = 30;
-                for(int i = 0; i < 10; i++){
+                tesseract.setLanguage("por");
+                x = 820;
+                y = 250;
+                width = 500;
+                height = 45;
+                for(int i = 0; i < 11; i++){
                     rec = new Rectangle(x, y, width, height);
                     result = tesseract.doOCR(image, rec);
-                    if(result.equals(""))
+                    if(result.equals("")){
                         result = result.replaceAll("", "-");
+                    }
                     result = result.replaceAll("\\n", "");
                     list.add(result);
-                    y+=30;
+                    y+=45;
                 }
-                y = 365;
+                y = 745;
                 for(int i = 0; i < 5; i++){
                     rec = new Rectangle(x, y, width, height);
                     result = tesseract.doOCR(image, rec);
@@ -127,7 +145,7 @@ public class Reader {
                         result = result.replaceAll("", "-");
                     result = result.replaceAll("\\n", "");
                     list.add(result);
-                    y+=30;
+                    y+=45;
                 }
                 break;
         }
